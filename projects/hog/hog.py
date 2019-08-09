@@ -128,7 +128,7 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     say:        The commentary function to call at the end of the first turn.
     """
     player = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
-    # BEGIN PROBLEM 5
+    # BEGIN PROBLEM 5 6
     "*** YOUR CODE HERE ***"
     while score0 < goal and score1 < goal:
         if player == 0:
@@ -139,12 +139,9 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
             score1 += take_turn(num_rolls, score0, dice)
         if is_swap(score0, score1):
             score0, score1 = score1, score0
+        say = say(score0, score1) # problem 6
         player = other(player)
-    # END PROBLEM 5
-    # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
-    # BEGIN PROBLEM 6
-    "*** YOUR CODE HERE ***"
-    # END PROBLEM 6
+    # END PROBLEM 5 6
     return score0, score1
 
 
