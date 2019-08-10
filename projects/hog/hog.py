@@ -279,6 +279,15 @@ def make_averaged(fn, num_samples=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def fun(*argv):
+        sum = 0
+        cnt = 0
+        while cnt < num_samples:
+            sum += fn(*argv)
+            cnt += 1
+        aver = sum / num_samples
+        return aver
+    return fun
     # END PROBLEM 8
 
 
