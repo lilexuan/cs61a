@@ -362,6 +362,7 @@ def bacon_strategy(score, opponent_score, margin=8, num_rolls=4):
     rolls NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
+    # 应该调用free_bacon()的
     opponent_one = opponent_score % 10
     opponent_ten = opponent_score // 10
     base = min(opponent_one, opponent_ten)
@@ -378,7 +379,22 @@ def swap_strategy(score, opponent_score, margin=8, num_rolls=4):
     non-beneficial swap. Otherwise, it rolls NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 4  # Replace this statement
+    score_now = score + free_bacon(opponent_score)
+    if is_swap(score_now, opponent_score):
+        if score_now < opponent_score:
+            return 0
+        elif score_now > opponent_score:
+            return num_rolls
+        else:
+            if free_bacon(opponent_score) >= margin:
+                return 0
+            else:
+                return num_rolls
+    else:
+        if free_bacon(opponent_score) >= margin:
+            return 0
+        else:
+            return num_rolls
     # END PROBLEM 11
 
 
