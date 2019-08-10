@@ -404,7 +404,8 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 4  # Replace this statement
+    num_rolls = swap_strategy(score, opponent_score, margin=3, num_rolls=3)
+    return num_rolls 
     # END PROBLEM 12
 
 
