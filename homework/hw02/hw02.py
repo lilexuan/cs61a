@@ -86,9 +86,16 @@ def accumulate(combiner, base, n, term):
     >>> accumulate(mul, 2, 3, square)    # 2 * 1^2 * 2^2 * 3^2
     72
     >>> accumulate(lambda x, y: x + y + 1, 2, 3, square)
-    19      #(((2 + 1^2 + 1) + 2^2 + 1) + 3^2 + 1)
+    19
     """
     "*** YOUR CODE HERE ***"
+    cnt = 1
+    result = base
+    while cnt <= n:
+        result = combiner(base, term(cnt))
+        base = result
+        cnt += 1
+    return result
 
 def summation_using_accumulate(n, term):
     """Returns the sum of term(1) + ... + term(n). The implementation
@@ -104,6 +111,7 @@ def summation_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term)
 
 def product_using_accumulate(n, term):
     """An implementation of product using accumulate.
@@ -118,6 +126,7 @@ def product_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
 
 
 
