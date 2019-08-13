@@ -156,3 +156,5 @@ def make_repeater(f, n):
     5
     """
     "*** YOUR CODE HERE ***"
+    # 这个好难, base 就是一个函数, 而不是一个数
+    return accumulate(compose1, lambda x : x, n, lambda x : f)
