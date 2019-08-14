@@ -66,6 +66,15 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def fun(N):
+        index = 1
+        cnt = 0
+        while index <= N:
+            if condition(N, index) == True:
+                cnt += 1
+            index += 1
+        return cnt
+    return fun
 
 def cycle(f1, f2, f3):
     """Returns a function that is itself a higher-order function.
@@ -94,3 +103,17 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def cycle_n_times(n):
+        def start_with_x(x):
+            count = 1
+            while count <= n:
+                if count % 3 == 1:
+                    x = f1(x)
+                elif count % 3 == 2:
+                    x = f2(x)
+                else:
+                    x = f3(x)
+                count += 1
+            return x
+        return start_with_x
+    return cycle_n_times
