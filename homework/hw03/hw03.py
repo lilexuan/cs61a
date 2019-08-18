@@ -96,6 +96,16 @@ def pingpong(n):
     #     index += 1
     # # print(*list, sep=' ')
     # return list[n-1]
+
+    # 编写一个递归辅助函数, 即helper function
+    def helper(index, direction, res):
+        if index == n:
+            return res + direction
+        elif index % 7 == 0 or has_seven(index):
+            return helper(index + 1, -direction, res + direction)
+        else:
+            return helper(index + 1, direction, res + direction)
+    return helper(1, 1, 0)
     
 
 
@@ -143,6 +153,7 @@ def taxicab(a, b):
     9
     """
     "*** YOUR CODE HERE ***"
+    
 
 def squares(s):
     """Returns a new list containing square roots of the elements of the
