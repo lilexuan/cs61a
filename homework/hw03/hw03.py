@@ -153,7 +153,7 @@ def taxicab(a, b):
     9
     """
     "*** YOUR CODE HERE ***"
-    
+    return abs(street(a) - street(b)) + abs(avenue(a) - avenue(b))    
 
 def squares(s):
     """Returns a new list containing square roots of the elements of the
