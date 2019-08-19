@@ -199,6 +199,27 @@ def count_change(amount):
     """
     "*** YOUR CODE HERE ***"
 
+    # 对于7来说, 可以分为
+    # 1. 7个1
+    # 2. 6个1 以及剩下
+    # 3. 5个1 以及剩下
+    # ...
+    # 7. 0个1 以及剩下
+
+    # 对于上述的表达式, 剩下中的表达式不能以1为单位, 而必须以2为单位, 以2为单位划分时, 剩下的必须以4为单位划分...
+    # 以此类推
+
+    def helper(amount, expo):
+        if 2 ** expo > amount:
+            return 0
+        elif 2 ** expo == amount:
+            return 1
+        elif 2 ** expo < amount:
+            return helper(amount - 2 ** expo, expo) + helper(amount, expo + 1)
+    
+    return helper(amount, 0)
+    
+
 def print_move(origin, destination):
     """Print instructions to move a disk."""
     print("Move the top disk from rod", origin, "to rod", destination)

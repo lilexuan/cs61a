@@ -2,3 +2,4 @@
 'pingpong-correct', (512, 70)
 'taxicab-correct', (1024, 70)
 'squares-correct', (1536, 70)
+'count_change-correct', (2048, 70)
