@@ -253,6 +253,20 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
+    # 1. 把n-1号盘子移动到缓冲区
+    # 2. 把1号从起点移动终点
+    # 3. 然后把缓冲区的n-1号盘子也移到终点
+    # * 请注意, 设计函数的时候, 输入三个位置的参数, 分别是起始位置, 缓冲位置, 终点位置
+    # * 先确定起始位置和终点位置, 然后剩下的就是缓冲位置
+    def move_helper(n, start_pos, buffer_pos, end_pos):
+        if n == 1:
+            print_move(start_pos, end_pos)
+        else:
+            move_helper(n - 1, start_pos, end_pos, buffer_pos)
+            move_helper(1, start_pos, buffer_pos, end_pos)
+            move_helper(n - 1, buffer_pos, start_pos, end_pos)
+
+    move_helper(n, start, 6 - start - end, end)
 
 ###################
 # Extra Questions #
