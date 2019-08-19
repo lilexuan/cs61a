@@ -1,3 +1,4 @@
 'has_seven-correct', (0, 70)
 'pingpong-correct', (512, 70)
 'taxicab-correct', (1024, 70)
+'squares-correct', (1536, 70)

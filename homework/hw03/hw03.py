@@ -167,6 +167,20 @@ def squares(s):
     []
     """
     "*** YOUR CODE HERE ***"
+    def sqrt_newton(n):
+        assert n >= 0, 'n不能小于0'
+        k = 1.0
+        while abs(abs(k * k - n) > 1e-9):
+            k = (k + n / k) / 2
+        return k
+    
+    res_list = []
+    for i in s:
+        sq = round(sqrt_newton(i))
+        if sq * sq == i:
+            res_list.append(sq)
+    return res_list
+
 
 def count_change(amount):
     """Return the number of ways to make change for amount.
