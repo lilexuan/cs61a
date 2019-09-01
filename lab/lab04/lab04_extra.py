@@ -26,3 +26,10 @@ def hailstone(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    print(int(n))
+    if n == 1:
+        return 1
+    elif n % 2 == 0:
+        return hailstone(n / 2) + 1
+    else:
+        return hailstone(n * 3 + 1) + 1

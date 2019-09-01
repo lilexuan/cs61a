@@ -2,3 +2,4 @@
 'closer_city-correct', (512, 70)
 'check_abstraction-correct', (1024, 70)
 'pascal-correct', (1536, 70)
+'hailstone-correct', (2048, 70)
