@@ -131,3 +131,9 @@ def pascal(row, column):
     """
 
     "*** YOUR CODE HERE ***"
+    if column == 0 or row == column:
+        return 1
+    elif column > row:
+        return 0
+    else:
+        return pascal(row - 1, column) + pascal(row - 1, column - 1)
