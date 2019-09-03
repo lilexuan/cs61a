@@ -64,12 +64,14 @@ def make_restaurant(name, location, categories, price, reviews):
     categories, price, and reviews for that restaurant."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    return [name, location, categories, price, reviews]
     # END Question 2
 
 def restaurant_name(restaurant):
     """Return the name of the restaurant, which is a string."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    return restaurant[0]
     # END Question 2
 
 def restaurant_location(restaurant):
@@ -77,18 +79,21 @@ def restaurant_location(restaurant):
     latitude and longitude."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    return restaurant[1]
     # END Question 2
 
 def restaurant_categories(restaurant):
     """Return the categories of the restaurant, which is a list of strings."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    return restaurant[2]
     # END Question 2
 
 def restaurant_price(restaurant):
     """Return the price of the restaurant, which is a number."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    return restaurant[3]
     # END Question 2
 
 def restaurant_ratings(restaurant):
@@ -96,4 +101,18 @@ def restaurant_ratings(restaurant):
     restaurant based on the reviews of the restaurant."""
     # BEGIN Question 2
     "*** YOUR CODE HERE ***"
+    # 不可以用[]
+    # rating_list = []
+    # for rate in restaurant[4]:
+    #     rating_list.append(rate[1])
+    # return rating_list
+
+    # rating_list = list(zip(*restaurant[4]))[1]
+    # return list(rating_list)
+
+    # return [x[1] for x in restaurant[4]]
+
+    # 我终于明白了, 使不可以用rate[1], x[1]这种, 必须使用我之前实现的抽象
+
+    return [review_rating(x) for x in restaurant[4]]
     # END Question 2

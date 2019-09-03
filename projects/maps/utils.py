@@ -89,4 +89,9 @@ def mean(s):
     """
     # BEGIN Question 1
     "*** YOUR CODE HERE ***"
+    assert len(s) > 0, "s must be not empty"
+    sum = 0
+    for x in s:
+        sum += x
+    return sum / len(s)
     # END Question 1
