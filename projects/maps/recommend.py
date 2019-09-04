@@ -50,6 +50,13 @@ def group_by_centroid(restaurants, centroids):
     """
     # BEGIN Question 4
     "*** YOUR CODE HERE ***"
+    groups = []
+    for restaurant in restaurants:
+        # 利用min函数的key值方法, 找出当前restaurant的centroid, 然后将min_centroid和restaurant组成pair
+        # 最后调用group_by_first函数即可
+        min_centroid = min(centroids, key=lambda centroid : distance(restaurant_location(restaurant), centroid))
+        groups.append([min_centroid, restaurant])
+    return group_by_first(groups)
     # END Question 4
 
 
