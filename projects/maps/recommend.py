@@ -64,6 +64,9 @@ def find_centroid(cluster):
     """Return the centroid of the locations of the restaurants in cluster."""
     # BEGIN Question 5
     "*** YOUR CODE HERE ***"
+    lat_mean = mean([restaurant_location(x)[0] for x in cluster])
+    lon_mean = mean([restaurant_location(x)[1] for x in cluster])
+    return [lat_mean, lon_mean]
     # END Question 5
 
 
