@@ -109,6 +109,17 @@ def find_predictor(user, restaurants, feature_fn):
 
     # BEGIN Question 7
     "*** YOUR CODE HERE ***"
+    S_xx, S_yy, S_xy = 0, 0, 0
+    pairs = zip(xs, ys) # 原来zip用在这里
+    m_x = mean(xs)
+    m_y = mean(ys)
+    for x, y in pairs:
+        S_xx += (x - m_x) ** 2
+        S_yy += (y - m_y) ** 2
+        S_xy += (x - m_x) * (y - m_y)
+    b = S_xy / S_xx
+    a = m_y - b * m_x
+    r_squared = abs(S_xy ** 2 / (S_xx * S_yy)) # 按理说不应该有abs的....但不知道为什么r_square居然会有复数
     # END Question 7
 
     def predictor(restaurant):
