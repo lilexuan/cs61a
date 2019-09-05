@@ -140,6 +140,8 @@ def best_predictor(user, restaurants, feature_fns):
     reviewed = user_reviewed_restaurants(user, restaurants)
     # BEGIN Question 8
     "*** YOUR CODE HERE ***"
+    # 对feature_fn执行find_predictor函数, 然后寻找方差最大值的predictor, 并返回, 注意find_predictor返回一个list, 第零个元素是prdictor, 第一个元素是r_squared
+    return max([find_predictor(user, reviewed, feature_fn) for feature_fn in feature_fns], key=lambda x : x[1])[0]
     # END Question 8
 
 
