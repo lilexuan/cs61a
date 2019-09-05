@@ -158,6 +158,13 @@ def rate_all(user, restaurants, feature_fns):
     reviewed = user_reviewed_restaurants(user, restaurants)
     # BEGIN Question 9
     "*** YOUR CODE HERE ***"
+    res = {}
+    for restaurant in restaurants:
+        if restaurant in reviewed:
+            res[restaurant_name(restaurant)] = user_rating(user, restaurant_name(restaurant))
+        else:
+            res[restaurant_name(restaurant)] = predictor(restaurant)
+    return res
     # END Question 9
 
 
