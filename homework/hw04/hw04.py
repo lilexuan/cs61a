@@ -188,11 +188,13 @@ def weight(size):
     """Construct a weight of some size."""
     assert size > 0
     "*** YOUR CODE HERE ***"
+    return ['weight', size]
 
 def size(w):
     """Select the size of a weight."""
     assert is_weight(w), 'must call size on a weight'
     "*** YOUR CODE HERE ***"
+    return w[1]
 
 def is_weight(w):
     """Whether w is a weight."""
@@ -241,6 +243,20 @@ def balanced(m):
     False
     """
     "*** YOUR CODE HERE ***"
+    if length(left(m)) * total_weight(end(left(m))) == length(right(m)) * total_weight(end(right(m))):
+        lm = end(left(m))
+        if not is_mobile(lm):
+            l = True
+        else:
+            l = balanced(lm)
+        rm = end(right(m))
+        if not is_mobile(rm):
+            r = True
+        else:
+            r = balanced(rm)
+        return l and r
+    else:
+        return False
 
 def totals_tree(m):
     """Return a tree representing the mobile with its total weight at the root.

@@ -1,2 +1,4 @@
 'replace_leaf-correct', (0, 70)
 'prune_leaves-correct', (512, 70)
+'total_weight-correct', (1024, 70)
+'balanced-correct', (1536, 70)
