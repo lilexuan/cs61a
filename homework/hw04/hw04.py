@@ -284,6 +284,12 @@ def totals_tree(m):
           2
     """
     "*** YOUR CODE HERE ***"
+    m_or_w_weight = total_weight(m)
+    if not is_mobile(m):
+        return [m_or_w_weight]
+    l_m_or_w = end(left(m))
+    r_m_or_w = end(right(m))
+    return [m_or_w_weight, totals_tree(l_m_or_w), totals_tree(r_m_or_w)]
 
 ###################
 # Extra Questions #
