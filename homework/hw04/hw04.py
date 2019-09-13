@@ -295,6 +295,8 @@ def totals_tree(m):
 # Extra Questions #
 ###################
 
+# 这个太难了........完全不知道在说什么
+
 def zero(f):
     return lambda x: x
 
@@ -304,10 +306,17 @@ def successor(n):
 def one(f):
     """Church numeral 1: same as successor(zero)"""
     "*** YOUR CODE HERE ***"
+    # 这是为啥啊
+    def ret(x):
+        return f(x)
+    return ret
 
 def two(f):
     """Church numeral 2: same as successor(successor(zero))"""
     "*** YOUR CODE HERE ***"
+    def ret(x):
+        return f(f(x))
+    return ret
 
 three = successor(two)
 
@@ -324,6 +333,14 @@ def church_to_int(n):
     3
     """
     "*** YOUR CODE HERE ***"
+    # 这又是为啥啊?...
+    def increase(x):
+        assert x >= 0
+        if x == 0:
+            return 1
+        else:
+            return x + 1
+    return n(increase)(0)
 
 def add_church(m, n):
     """Return the Church numeral for m + n, for Church numerals m and n.
@@ -332,6 +349,11 @@ def add_church(m, n):
     5
     """
     "*** YOUR CODE HERE ***"
+    def ret(f):
+        def _add(x):
+            return m(f)(x) + n(f)(x)
+        return _add
+    return ret
 
 def mul_church(m, n):
     """Return the Church numeral for m * n, for Church numerals m and n.
@@ -343,6 +365,9 @@ def mul_church(m, n):
     12
     """
     "*** YOUR CODE HERE ***"
+    def ret(f):
+        return m(n(f))
+    return ret
 
 def pow_church(m, n):
     """Return the Church numeral m ** n, for Church numerals m and n.
@@ -353,3 +378,4 @@ def pow_church(m, n):
     9
     """
     "*** YOUR CODE HERE ***"
+    return n(m)
