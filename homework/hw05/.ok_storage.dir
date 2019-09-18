@@ -2,3 +2,4 @@
 'make_fib-correct', (512, 70)
 'make_withdraw-correct', (1024, 70)
 'make_joint-correct', (1536, 70)
+'preorder-correct', (2048, 70)

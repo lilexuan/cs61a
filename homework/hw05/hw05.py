@@ -180,6 +180,14 @@ def preorder(t):
     [2, 4, 6]
     """
     "*** YOUR CODE HERE ***"
+    res = []
+    def helper(t):
+        nonlocal res
+        res.append(label(t))
+        for b in branches(t):
+            helper(b)
+    helper(t)
+    return res
 
 class Mint:
     """A mint creates coins by stamping on years.
