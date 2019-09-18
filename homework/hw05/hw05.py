@@ -159,6 +159,15 @@ def make_joint(withdraw, old_password, new_password):
     "Your account is locked. Attempts: ['my', 'secret', 'password']"
     """
     "*** YOUR CODE HERE ***"
+    test = withdraw(0, old_password)
+    if type(test) == str:
+        return test
+    def joint_withdraw(amount, password_try):
+        if password_try == old_password or password_try == new_password:
+            return withdraw(amount, old_password)
+        else:
+            return withdraw(amount, password_try)
+    return joint_withdraw
 
 def preorder(t):
     """Return a list of the entries in this tree in the order that they
