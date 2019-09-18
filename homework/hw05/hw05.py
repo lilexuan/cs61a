@@ -226,9 +226,11 @@ class Mint:
 
     def create(self, kind):
         "*** YOUR CODE HERE ***"
+        return kind(self.year)
 
     def update(self):
         "*** YOUR CODE HERE ***"
+        self.year = self.current_year
 
 class Coin:
     def __init__(self, year):
@@ -236,6 +238,7 @@ class Coin:
 
     def worth(self):
         "*** YOUR CODE HERE ***"
+        return cents + Mint.current_year - self.year - 50
 
 class Nickel(Coin):
     cents = 5
