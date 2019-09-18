@@ -100,6 +100,25 @@ def make_withdraw(balance, password):
     True
     """
     "*** YOUR CODE HERE ***"
+    password_list = []
+    locked = False
+    def withdraw(amount, password_try):
+        nonlocal password_list
+        nonlocal balance
+        nonlocal locked
+        if locked == True:
+            return 'Your account is locked. Attempts: ' + str(password_list)
+        if password_try == password:
+            if amount > balance:
+                return 'Insufficient funds'
+            balance = balance - amount
+            return balance
+        else:
+            password_list.append(password_try)
+            if len(password_list) == 3:
+                locked = True
+            return 'Incorrect password'
+    return withdraw
 
 def make_joint(withdraw, old_password, new_password):
     """Return a password-protected withdraw function that has joint access to
