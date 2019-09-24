@@ -281,8 +281,10 @@ class FireAnt(Ant):
     name = 'Fire'
     damage = 3
     # OVERRIDE CLASS ATTRIBUTES HERE
+    food_cost = 5
+    armor = 1
     # BEGIN Problem 5
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 5
 
     def reduce_armor(self, amount):
@@ -292,6 +294,18 @@ class FireAnt(Ant):
         """
         # BEGIN Problem 5
         "*** YOUR CODE HERE ***"
+        self.armor -= amount
+        if self.armor <= 0:
+            """
+            注意这里不能直接遍历bees, 需要遍历bees的复制
+            这点要注意!!
+            for bee in self.place.bees:
+                bee.reduce_armor(self.damage)
+            """
+            for bee in self.place.bees[:]:
+                bee.reduce_armor(self.damage)
+            self.place.remove_insect(self)
+
         # END Problem 5
 
 class HungryAnt(Ant):
