@@ -372,7 +372,7 @@ class WallAnt(Ant):
     food_cost = 4
     implemented = True
     
-    def __init__(sefl, armor=4):
+    def __init__(self, armor=4):
         self.armor = armor
 # END Problem 8
 
