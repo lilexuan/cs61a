@@ -42,15 +42,19 @@ class Place(object):
             if self.ant is None:
                 self.ant = insect
             else:
-                # BEGIN Problem 9
-                if self.ant.is_container == True:
-                    self.ant.contain_ant(insect)
-                elif insect.is_container == True:
-                    current_ant = self.ant
-                    self.ant = insect
-                    self.ant.contain_ant(current_ant)
-                else:
-                    assert self.ant is None, 'Two ants in {0}'.format(self)
+                if self.ant.is_container == True: # 如果当前位置的蚂蚁是容器
+                    if self.ant.can_contain(insect): # 容器可以装下蚂蚁
+                        self.ant.contain_ant(insect)
+                    else: # 容器装不下蚂蚁
+                        # print("1")
+                        assert self.ant is None, 'Two ants in {0}'.format(self)
+                else: # 当前位置的蚂蚁不是容器
+                    if insect.is_container == False: # 插入的蚂蚁也不是容器
+                        # print("2")
+                        assert self.ant is None, 'Two ants in {0}'.format(self)
+                    else: # 插入的蚂蚁是容器
+                        insect.contain_ant(self.ant)
+                        self.ant = insect
                 # END Problem 9
         else:
             self.bees.append(insect)
