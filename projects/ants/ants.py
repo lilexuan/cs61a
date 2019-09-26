@@ -74,6 +74,9 @@ class Place(object):
             # Special handling for QueenAnt
             # BEGIN Problem 13
             "*** YOUR CODE HERE ***"
+            if isinstance(insect, QueenAnt):
+                if insect.real == True:
+                    return
             # END Problem 13
 
             # Special handling for container ants
@@ -475,19 +478,28 @@ class ScubaThrower(ThrowerAnt):
 # END Problem 12
 
 # BEGIN Problem 13
-class QueenAnt(Ant):  # You should change this line
+class QueenAnt(ScubaThrower):  # You should change this line
 # END Problem 13
     """The Queen of the colony. The game is over if a bee enters her place."""
 
     name = 'Queen'
     # OVERRIDE CLASS ATTRIBUTES HERE
+    food_cost = 7
+    created = False # 是否已经被召唤的标记
+    buffed_ants = [] # 被buff过的蚂蚁列表
     # BEGIN Problem 13
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 13
 
     def __init__(self, armor=1):
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        self.armor = armor
+        if QueenAnt.created == False: # 创建女王时, 打上真假标记, 注意这里created是类标记
+            self.real = True
+            QueenAnt.created = True
+        else:
+            self.real = False
         # END Problem 13
 
     def action(self, colony):
@@ -498,6 +510,20 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        if self.real == False:
+            self.reduce_armor(self.armor)
+        else:
+            ThrowerAnt.action(self, colony)
+            onePlace = self.place.exit
+            while onePlace is not None:
+                thisAnt = onePlace.ant
+                if thisAnt and thisAnt not in self.buffed_ants:
+                    thisAnt.damage *= 2
+                    self.buffed_ants.append(thisAnt)
+                if isinstance(thisAnt, BodyguardAnt) and thisAnt.contained_ant and thisAnt.contained_ant not in self.buffed_ants:
+                    thisAnt.contained_ant.damage *= 2
+                    self.buffed_ants.append(thisAnt.contained_ant)
+                onePlace = onePlace.exit
         # END Problem 13
 
     def reduce_armor(self, amount):
@@ -506,6 +532,13 @@ class QueenAnt(Ant):  # You should change this line
         """
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
+        self.armor -= amount
+        if self.armor <= 0:
+            if self.real == True: # 当真女王的生命值小于等于0时, 游戏结束
+                bees_win()
+            else:
+                self.place.remove_insect(self)
+        
         # END Problem 13
 
 class AntRemover(Ant):
