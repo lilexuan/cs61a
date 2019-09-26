@@ -43,7 +43,14 @@ class Place(object):
                 self.ant = insect
             else:
                 # BEGIN Problem 9
-                assert self.ant is None, 'Two ants in {0}'.format(self)
+                if self.ant.is_container == True:
+                    self.ant.contain_ant(insect)
+                elif insect.is_container == True:
+                    current_ant = self.ant
+                    self.ant = insect
+                    self.ant.contain_ant(current_ant)
+                else:
+                    assert self.ant is None, 'Two ants in {0}'.format(self)
                 # END Problem 9
         else:
             self.bees.append(insect)
@@ -173,6 +180,7 @@ class Ant(Insect):
     food_cost = 0
     # ADD CLASS ATTRIBUTES HERE
     blocks_path = True
+    is_container = False
 
     def __init__(self, armor=1):
         """Create an Ant with an ARMOR quantity."""
@@ -381,8 +389,11 @@ class BodyguardAnt(Ant):
 
     name = 'Bodyguard'
     # OVERRIDE CLASS ATTRIBUTES HERE
+    is_container = True
+    food_cost = 4
+
     # BEGIN Problem 9
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem 9
 
     def __init__(self, armor=2):
@@ -392,16 +403,27 @@ class BodyguardAnt(Ant):
     def can_contain(self, other):
         # BEGIN Problem 9
         "*** YOUR CODE HERE ***"
+        if self.contained_ant is not None:
+            return False
+        else:
+            if other.is_container == True:
+                return False
+            else:
+                return True
         # END Problem 9
 
     def contain_ant(self, ant):
         # BEGIN Problem 9
         "*** YOUR CODE HERE ***"
+        if self.can_contain(ant):
+            self.contained_ant = ant
         # END Problem 9
 
     def action(self, colony):
         # BEGIN Problem 9
         "*** YOUR CODE HERE ***"
+        if self.contained_ant is not None:
+            self.contained_ant.action(colony)
         # END Problem 9
 
 class TankAnt(BodyguardAnt):
