@@ -646,8 +646,9 @@ class LaserAnt(ThrowerAnt):
 
     name = 'Laser'
     # OVERRIDE CLASS ATTRIBUTES HERE
+    food_cost = 10
     # BEGIN Problem OPTIONAL
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem OPTIONAL
 
     def __init__(self, armor=1):
@@ -656,12 +657,45 @@ class LaserAnt(ThrowerAnt):
 
     def insects_in_front(self, hive):
         # BEGIN Problem OPTIONAL
-        return {}
+        current_place = self.place
+        distance = 0
+        insects = {}
+        while current_place != hive:
+
+            # 处理蚂蚁部分
+            if current_place.ant is not None: # 如果当前位置有蚂蚁
+                if current_place.ant.is_container == True: # 如果当前位置的蚂蚁是容器
+                    insects[current_place.ant] = distance
+                    # print("容器 ", distance)
+                    if current_place.ant.contained_ant is not None: # 如果容器里有蚂蚁
+                        insects[current_place.ant.contained_ant] = distance
+                        # print("容器内蚂蚁 ", distance)
+                else: # 如果当前位置的蚂蚁不是容器
+                    if not isinstance(current_place.ant, LaserAnt): # 如果当前位置的蚂蚁不是LaserAnt
+                        insects[current_place.ant] = distance
+                        # print("蚂蚁 ", distance)
+
+            # 处理蜜蜂部分
+            if current_place.bees is not None:
+                for bee in current_place.bees:
+                    insects[bee] = distance
+                    # print("蜜蜂 ", distance)
+            
+            distance += 1
+            current_place = current_place.entrance
+
+        return insects
         # END Problem OPTIONAL
 
     def calculate_damage(self, distance):
         # BEGIN Problem OPTIONAL
-        return 0
+        distance_reduce = distance * 0.2
+        shot_reduce = self.insects_shot * 0.05
+        damage = 2 - distance_reduce - shot_reduce
+        if damage <= 0:
+            return 0
+        else:
+            return damage
         # END Problem OPTIONAL
 
     def action(self, colony):
