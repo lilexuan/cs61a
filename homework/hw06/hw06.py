@@ -14,7 +14,7 @@ def survey(p):
 # Object Oriented Programming
 
 class Fib():
-    """A Fibonacci number.
+    """A Fibonacci stock.
 
     >>> start = Fib()
     >>> start
@@ -86,3 +86,36 @@ class VendingMachine:
     'Here is your soda.'
     """
     "*** YOUR CODE HERE ***"
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.stock = 0
+        self.balance = 0
+
+    def vend(self):
+        if self.stock <= 0:
+            return 'Machine is out of stock.'
+        elif self.balance < self.price:
+            return 'You must deposit ${} more.'.format(str(self.price - self.balance))
+        else:
+            self.balance = self.balance - self.price
+            self.stock -= 1
+            if self.balance != 0:
+                change = self.balance
+                self.balance = 0
+                return 'Here is your {} and ${} change.'.format(self.name, str(change))
+            else:
+                return 'Here is your {}.'.format(self.name)
+    
+    def deposit(self, balance):
+        if self.stock <= 0:
+            return 'Machine is out of stock. Here is your ${}.'.format(str(balance))
+        else:
+            self.balance += balance
+            return 'Current balance: ${}'.format(str(self.balance))
+
+    def restock(self, restock_stock):
+        self.stock += restock_stock
+        return 'Current {} stock: {}'.format(self.name, str(self.stock))
+
+    
