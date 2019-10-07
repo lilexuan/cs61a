@@ -28,6 +28,11 @@ def store_digits(n):
     Link(8, Link(7, Link(6)))
     """
     "*** YOUR CODE HERE ***"
+    ans_linked_list = Link.empty
+    while n != 0:
+        digit, n = n % 10, n // 10
+        ans_linked_list = Link(digit, ans_linked_list)
+    return ans_linked_list
 
 def cumulative_sum(t):
     """Mutates t so that each node's label becomes the sum of all labels in
