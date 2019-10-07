@@ -44,6 +44,14 @@ def cumulative_sum(t):
     Tree(16, [Tree(8, [Tree(5)]), Tree(7)])
     """
     "*** YOUR CODE HERE ***"
+    # 递归关系: 每一个树结点的值等于子树结点的值之和
+    # 递归边界: 该树结点本身就是叶, 无子树
+    if t.is_leaf():
+        pass
+    else:
+        for b in t.branches:
+            cumulative_sum(b)
+            t.label += b.label
 
 # Linked List Class
 class Link:
