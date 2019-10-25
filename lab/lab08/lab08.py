@@ -143,6 +143,7 @@ def insert_into_all(item, nested_list):
     [[0], [0, 1, 2], [0, 3]]
     """
     "*** YOUR CODE HERE ***"
+    return [[item] + lst for lst in nested_list]
 
 def subseqs(s):
     """Assuming that S is a list, return a nested list of all subsequences
@@ -155,6 +156,13 @@ def subseqs(s):
     [[]]
     """
     "*** YOUR CODE HERE ***"
+    # 递归关系: n个元素的所有自己 = 除第一个元素外的其他元素的所有子集subset + (subset中每个组合加上第一个元素所构成的集合)
+    # 递归基 除了第一个元素外, 没有其他元素了, 就返回一个集合, 里面包含了一个空集 
+    if not s:
+        return [[]]
+    else:
+        subset = subseqs(s[1:]) # subset为除了第一个元素以外, 其他元素的所有子集
+        return insert_into_all(s[0], subset) + subset # 将第一个元素全加于subset中得到的集合, 再和subset合并起来就是所有的子集
 
 def inc_subseqs(s):
     """Assuming that S is a list, return a nested list of all subsequences
