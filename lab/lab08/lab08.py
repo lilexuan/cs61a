@@ -123,15 +123,14 @@ def long_paths(tree, n):
     [Link(0, Link(11, Link(12, Link(13, Link(14)))))]
     """
     "*** YOUR CODE HERE ***"
-    # 想不出来
-    res = []
-    cnt = 0
-    def helper(s):
-        if s.is_leaf() == True:
-            return
-        cnt += 1
-        if cnt >= n
-
+    # 不是自己想的
+    paths = []
+    if n <= 0 and tree.is_leaf() == True:
+        paths.append(Link(tree.label))
+    for b in tree.branches:
+        for path in long_paths(b, n - 1):
+            paths.append(Link(tree.label, path))
+    return paths
 
 # Recursion/Tree Recursion
 def insert_into_all(item, nested_list):

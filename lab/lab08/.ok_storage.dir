@@ -1,3 +1,4 @@
 'deep_len-correct', (0, 70)
 'make_to_string-correct', (512, 70)
 'tree_map-correct', (1024, 70)
+'long_paths-correct', (1536, 70)
