@@ -3,3 +3,5 @@
 'tree_map-correct', (1024, 70)
 'long_paths-correct', (1536, 70)
 'subseqs-correct', (2048, 70)
+'inc_subseqs-correct', (2560, 70)
+'Keyboard-correct', (3072, 70)

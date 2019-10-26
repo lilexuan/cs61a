@@ -180,14 +180,14 @@ def inc_subseqs(s):
     """
     def subseq_helper(s, prev):
         if not s:
-            return ____________________
+            return [[]]
         elif s[0] < prev:
-            return ____________________
+            return subseq_helper(s[1:], prev)
         else:
-            a = ______________________
-            b = ______________________
-            return insert_into_all(________, ______________) + ________________
-    return subseq_helper(____, ____)
+            a = subseq_helper(s[1:], s[0])
+            b = subseq_helper(s[1:], prev)
+            return insert_into_all(s[0], a) + b
+    return subseq_helper(s, 0)
 
 def num_trees(n):
     """How many full binary trees have exactly n leaves? E.g.,
@@ -210,7 +210,14 @@ def num_trees(n):
 
     """
     "*** YOUR CODE HERE ***"
-
+    # 卡特兰数, h(n)是具有n+1个叶子结点的完全二叉树个数
+    def h(n):
+        if n == 0 or n == 1:
+            return 1
+        else:
+            pre = h(n - 1)
+            return pre * (4 * n - 2) // (n + 1)
+    return h(n - 1)
 # OOP
 class Keyboard:
     """A Keyboard takes in an arbitrary amount of buttons, and has a
@@ -237,16 +244,29 @@ class Keyboard:
 
     def __init__(self, *args):
         "*** YOUR CODE HERE ***"
+        self.buttons = {}
+        for button in args:
+            self.buttons[button.pos] = button
+
 
     def press(self, info):
         """Takes in a position of the button pressed, and
         returns that button's output"""
         "*** YOUR CODE HERE ***"
+        if info in self.buttons:
+            self.buttons[info].times_pressed += 1
+            return self.buttons[info].key
+        else:
+            return ''
 
     def typing(self, typing_input):
         """Takes in a list of positions of buttons pressed, and
         returns the total output"""
         "*** YOUR CODE HERE ***"
+        output = ''
+        for info in typing_input:
+            output += self.press(info)
+        return output
 
 class Button:
     """
