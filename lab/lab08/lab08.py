@@ -361,6 +361,7 @@ def trade(first, second):
     m, n = 1, 1
 
     "*** YOUR CODE HERE ***"
+    
 
     if False: # change this line!
         first[:m], second[:n] = second[:n], first[:m]
