@@ -311,6 +311,24 @@ def make_advanced_counter_maker():
     1
     """
     "*** YOUR CODE HERE ***"
+    global_count = 0
+    def make_counter():
+        count = 0
+        def counter(cmd):
+            nonlocal global_count
+            nonlocal count
+            if cmd == 'count':
+                count += 1
+                return count
+            elif cmd == 'reset':
+                count = 0
+            elif cmd == 'global-count':
+                global_count += 1
+                return global_count
+            elif cmd == 'global-reset':
+                global_count = 0
+        return counter
+    return make_counter
 
 # Mutable Lists
 def trade(first, second):
