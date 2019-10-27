@@ -361,9 +361,30 @@ def trade(first, second):
     m, n = 1, 1
 
     "*** YOUR CODE HERE ***"
+    # 先比较a和b中的第一项的大小, 假设是a的第一项较小, 那么就一直往后累加, 直到和大于等于b的第一项
+    # 若是等于则可以直接交换
+    # 若是不等于, 则对b进行往后累加, 直至大于等于a的累计和
+    # 重复以上步骤, 直至找到相等的和或者数组遍历结束
     
-
-    if False: # change this line!
+    sum_first, sum_second = first[0], second[0]
+    index_first, index_second = 0, 0
+    flag = False
+    while index_first < len(first) and index_second < len(second):
+        if sum_first == sum_second:
+            flag = True
+            break
+        elif sum_first < sum_second:
+            index_first += 1
+            if index_first == len(first):
+                break
+            sum_first += first[index_first]
+        elif sum_first > sum_second:
+            index_second += 1
+            if index_second == len(second):
+                break
+            sum_second += second[index_second]
+    m, n = index_first + 1, index_second + 1
+    if flag: # change this line!
         first[:m], second[:n] = second[:n], first[:m]
         return 'Deal!'
     else:
