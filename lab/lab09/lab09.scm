@@ -15,8 +15,15 @@
 (over-or-under 1 1)
 ; expect 0
 
+; recursive condition: if node_now meets f, then cons node_now and the rest(process in recursive
+;                      if node_now dont't meets f , then return the rest(process recursively)
+; recursive ending: if node_now is null, return ()
 (define (filter-lst f lst)
-  'YOUR-CODE-HERE
+  (cond 
+    ((null? lst) ())
+    ((f (car lst)) (cons (car lst) (filter-lst f (cdr lst))))
+    (else (filter-lst f (cdr lst)))
+  )
 )
 
 ;;; Tests
