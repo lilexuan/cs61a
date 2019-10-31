@@ -2,11 +2,18 @@
 
 
 (define lst
-  'YOUR-CODE-HERE
+  (list 
+    (cons 1 nil)
+    2
+    (cons 3 (cons 4 nil))
+    5
+  )
 )
 
 (define (composed f g)
-  'YOUR-CODE-HERE
+  (lambda (x)
+    (f (g x))
+  )
 )
 
 (define (remove item lst)
