@@ -15,7 +15,9 @@
 ; helper function
 ; returns the values of lst that are bigger than x
 ; e.g., (larger-values 3 '(1 2 3 4 5 1 2 3 4 5)) --> (4 5 4 5)
-(define (larger-values x lst) 'YOUR-CODE-HERE)
+(define (larger-values x lst)
+  (filter (lambda (y) (< x y)) lst)
+)
 
 (define (longest-increasing-subsequence lst)
   ; the following skeleton is optional, remove if you like
@@ -26,9 +28,9 @@
              (define large-values-rest
                      (larger-values first rest)
              )
-             (define with-first 'YOUR-CODE-HERE)
-             (define without-first 'YOUR-CODE-HERE)
-             (if 'YOUR-CONDITION-HERE
+             (define with-first (append first large-values-rest))
+             (define without-first large-values-rest)
+             (if (> (car rest) first)
                  with-first
                  without-first
              )
