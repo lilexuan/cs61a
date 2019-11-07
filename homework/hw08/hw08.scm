@@ -28,9 +28,13 @@
              (define large-values-rest
                      (larger-values first rest)
              )
-             (define with-first (append first large-values-rest))
-             (define without-first large-values-rest)
-             (if (> (car rest) first)
+             (define with-first
+                     (cons first (longest-increasing-subsequence large-values-rest))
+             )
+             (define without-first
+                     (longest-increasing-subsequence rest)
+             )
+             (if (> (length with-first) (length without-first))
                  with-first
                  without-first
              )
