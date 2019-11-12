@@ -150,13 +150,23 @@
 )
 
 ; Exponentiations are represented as lists that start with ^.
-(define (make-exp base exponent) 'YOUR-CODE-HERE)
+(define (make-exp base exponent)
+  (cond 
+    ((= exponent 0)                 1)
+    ((and (number? base) (= base 0)) 1)
+    ((and (number? exponent) (= exponent 1)) base)
+    ((and (number? exponent) (number? base)) (expt base exponent))
+    (else (list '^ base exponent))
+  )
+)
 
-(define (base exp) 'YOUR-CODE-HERE)
+(define (base exp) (cadr exp))
 
-(define (exponent exp) 'YOUR-CODE-HERE)
+(define (exponent exp) (caddr exp))
 
-(define (exp? exp) 'YOUR-CODE-HERE)
+(define (exp? exp)
+  (and (list? exp) (eq? (car exp) '^))
+)
 
 (define x^2 (make-exp 'x 2))
 
