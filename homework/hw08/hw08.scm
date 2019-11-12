@@ -138,7 +138,16 @@
   )
 )
 
-(define (derive-product expr var) 'YOUR-CODE-HERE)
+(define (derive-product expr var)
+  (make-sum
+   (make-product (derive (multiplier expr) var)
+                 (multiplicand expr)
+   )
+   (make-product (multiplier expr)
+                 (derive (multiplicand expr) var)
+   )
+  )
+)
 
 ; Exponentiations are represented as lists that start with ^.
 (define (make-exp base exponent) 'YOUR-CODE-HERE)
