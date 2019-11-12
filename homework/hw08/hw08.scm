@@ -152,11 +152,21 @@
 ; Exponentiations are represented as lists that start with ^.
 (define (make-exp base exponent)
   (cond 
-    ((= exponent 0)                 1)
-    ((and (number? base) (= base 0)) 1)
-    ((and (number? exponent) (= exponent 1)) base)
-    ((and (number? exponent) (number? base)) (expt base exponent))
-    (else (list '^ base exponent))
+    ((= exponent 0)
+     1
+    )
+    ((and (number? base) (= base 0))
+     1
+    )
+    ((and (number? exponent) (= exponent 1))
+     base
+    )
+    ((and (number? exponent) (number? base))
+     (expt base exponent)
+    )
+    (else
+     (list '^ base exponent)
+    )
   )
 )
 
@@ -172,4 +182,8 @@
 
 (define x^3 (make-exp 'x 3))
 
-(define (derive-exp exp var) 'YOUR-CODE-HERE)
+(define (derive-exp exp var)
+  (make-product (exponent exp)
+                (make-exp (base exp) (- (exponent exp) 1))
+  )
+)
