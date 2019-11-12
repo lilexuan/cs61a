@@ -29,7 +29,9 @@
                      (larger-values first rest)
              )
              (define with-first
-                     (cons first (longest-increasing-subsequence large-values-rest))
+                     (cons first
+                           (longest-increasing-subsequence large-values-rest)
+                     )
              )
              (define without-first
                      (longest-increasing-subsequence rest)
@@ -131,7 +133,9 @@
 (define (multiplicand p) (caddr p))
 
 (define (derive-sum expr var)
-    
+  (make-sum (derive (addend expr) var)
+            (derive (augend expr) var)
+  )
 )
 
 (define (derive-product expr var) 'YOUR-CODE-HERE)
