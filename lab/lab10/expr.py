@@ -180,6 +180,13 @@ class CallExpr(Expr):
         Number(14)
         """
         "*** YOUR CODE HERE ***"
+        # self.operator 是一个对象的实例, 如Name('add')
+        # self.operands 是一个包含多个对象实例的列表, 如[Literal(3), Name('s')]
+        operator_eval = self.operator.eval(env)
+        operands_eval = [x.eval(env) for x in self.operands]
+        return operator_eval.apply(operands_eval)
+
+
 
     def __str__(self):
         function = str(self.operator)
