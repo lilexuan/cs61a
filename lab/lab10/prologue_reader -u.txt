@@ -1,0 +1,240 @@
+PS C:\Users\83452\cs61a\lab\lab10> python ok -q prologue_reader -u
+Assignment: Lab 10
+OK, version v1.14.19
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 1
+(cases remaining: 10)
+
+Q: What does REPL stand for?
+Choose the number of the correct choice:
+0) Read-Eval-Print-Loop
+1) Read-Eval-Parse-Lex
+2) Really-Enormous-Purple-Llamas
+?
+-- Exiting unlocker --
+
+ERROR  | auth.py:102 | {'error': 'invalid_grant'}
+Performing authentication
+Please enter your bCourses email: Checking for software updates...
+OK is up to date
+PS C:\Users\83452\cs61a\lab\lab10> python ok -q prologue_reader -u --local
+=====================================================================
+Assignment: Lab 10
+OK, version v1.14.19
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 1
+(cases remaining: 10)
+
+Q: What does REPL stand for?
+Choose the number of the correct choice:
+0) Read-Eval-Parse-Lex
+1) Really-Enormous-Purple-Llamas
+2) Read-Eval-Print-Loop
+? 2
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 2
+(cases remaining: 9)
+
+Q: What does the read component of the REPL loop do?
+Choose the number of the correct choice:
+0) Turns input into a useful data structure
+1) Evaluates call expressions
+2) Ensures a function has been defined before it is called
+3) Turns input into tokens
+? 1
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) Turns input into a useful data structure
+1) Evaluates call expressions
+2) Ensures a function has been defined before it is called
+3) Turns input into tokens
+? 0
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 3
+(cases remaining: 8)
+
+Q: What does the tokenize function in reader.py return?
+Choose the number of the correct choice:
+0) Input expression represented as an instance of a subclass of Expr
+1) Result of evaluating the input expression
+2) Input expression with corrected number of parentheses
+3) Input expression represented as a list of tokens
+? 3
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 4
+(cases remaining: 7)
+
+Q: What will tokenize('add(3, 4)') output?
+Choose the number of the correct choice:
+0) ['add', '(', 3, ',', 4, ')']
+1) ['a', 'd', 'd', '(', 3, ',', 4, ')']
+2) ['a', 'd', 'd', '(', '3', ',', '4', ')']
+3) ['add', '(', '3', ',', '4', ')']
+? 3
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) ['add', '(', 3, ',', 4, ')']
+1) ['a', 'd', 'd', '(', 3, ',', 4, ')']
+2) ['a', 'd', 'd', '(', '3', ',', '4', ')']
+3) ['add', '(', '3', ',', '4', ')']
+? 1
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) ['add', '(', 3, ',', 4, ')']
+1) ['a', 'd', 'd', '(', 3, ',', 4, ')']
+2) ['a', 'd', 'd', '(', '3', ',', '4', ')']
+3) ['add', '(', '3', ',', '4', ')']
+? 0
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 5
+(cases remaining: 6)
+
+Q: What will tokenize('(lambda: 4)()') output?
+Choose the number of the correct choice:
+0) ['(', LambdaExpr, ':', 4, ')', '(', ')']
+1) ['lambda', 4, '(', ')']
+2) ['(', LambdaExpr, 4, ')', '(', ')']
+3) ['(', 'lambda', ':', 4, ')', '(', ')']
+? 2
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) ['(', LambdaExpr, ':', 4, ')', '(', ')']
+1) ['lambda', 4, '(', ')']
+2) ['(', LambdaExpr, 4, ')', '(', ')']
+3) ['(', 'lambda', ':', 4, ')', '(', ')']
+? 0
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) ['(', LambdaExpr, ':', 4, ')', '(', ')']
+1) ['lambda', 4, '(', ')']
+2) ['(', LambdaExpr, 4, ')', '(', ')']
+3) ['(', 'lambda', ':', 4, ')', '(', ')']
+? 3
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 6
+(cases remaining: 5)
+
+Q: What does the read_expr function in reader.py accept as input and
+return?  (looking at the read function may help answer this question)
+Choose the number of the correct choice:
+0) List of tokens and an instance of a subclass of Expr
+1) Input expression and an instance of a subclass of Expr
+2) Input expression and list of tokens
+3) List of tokens and number of parentheses
+? 3
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) List of tokens and an instance of a subclass of Expr
+1) Input expression and an instance of a subclass of Expr
+2) Input expression and list of tokens
+3) List of tokens and number of parentheses
+? 0
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 7
+(cases remaining: 4)
+
+Q: What does the read function in reader.py return?
+Choose the number of the correct choice:
+0) Input expression represented as an instance of a subclass of Expr
+1) Input expression represented as a list of tokens
+2) Result of evaluating the input expression
+3) Input expression with corrected number of parentheses
+? 2
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) Input expression represented as an instance of a subclass of Expr
+1) Input expression represented as a list of tokens
+2) Result of evaluating the input expression
+3) Input expression with corrected number of parentheses
+? 0
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 8
+(cases remaining: 3)
+
+Q: What will read('1') output?
+Choose the number of the correct choice:
+0) Name(1)
+1) Number(1)
+2) Name('1')
+3) Literal(1)
+? 3
+-- OK! --
+
+---------------------------------------------------------------------
+Prologue - Reader > Suite 1 > Case 9
+(cases remaining: 2)
+
+Q: What will read('x') output?
+Choose the number of the correct choice:
+0) Literal(x)
+1) Name('x')
+2) Name(x)
+3) x
+? 0
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) Literal(x)
+1) Name('x')
+2) Name(x)
+3) x
+-- OK! --
+Prologue - Reader > Suite 1 > Case 10
+(cases remaining: 1)
+
+Q: What will read('add(3, 4)') output?
+Choose the number of the correct choice:
+0) CallExpr(Literal('add'), Literal(3), Literal(4))
+1) CallExpr('add', [Literal(3), Literal(4)])
+2) CallExpr(Name('add'), [Literal(3), Literal(4)])
+3) CallExpr(Name('add'), Literal(3), Literal(4))
+? 1
+-- Not quite. Try again! --
+
+Choose the number of the correct choice:
+0) CallExpr(Literal('add'), Literal(3), Literal(4))
+1) CallExpr('add', [Literal(3), Literal(4)])
+2) CallExpr(Name('add'), [Literal(3), Literal(4)])
+3) CallExpr(Name('add'), Literal(3), Literal(4))
+? 2
+-- OK! --
+
+---------------------------------------------------------------------
+OK! All cases for Prologue - Reader unlocked.
